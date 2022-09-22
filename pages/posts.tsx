@@ -6,7 +6,7 @@ import { getSortedPostsData } from "../lib/posts";
 import utilStyles from "../styles/utils.module.css";
 import { GetStaticProps } from "next";
 
-export default function Home({
+export default function Posts({
   allPostsData,
 }: {
   allPostsData: {
@@ -16,16 +16,12 @@ export default function Home({
   }[];
 }) {
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <p>Hello World! I'm Lazywon :-) I'm a frontend developer.</p>
-        <p>Welcome to my Devlog ! </p>
-      </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Recent Posts</h2>
+        <h2 className={utilStyles.headingLg}>Posts</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>

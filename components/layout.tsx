@@ -3,8 +3,9 @@ import Image from "next/image";
 import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
+import Nav from "./nav";
 
-const name = "Lazywon";
+const name = "Lazywon's DevLog";
 export const siteTitle = "Lazywon's Blog";
 
 export default function Layout({
@@ -18,10 +19,7 @@ export default function Layout({
     <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Lazywon's personal blog using Next.js"
-        />
+        <meta name="description" content="Lazywon's Dev Blog" />
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
@@ -66,6 +64,7 @@ export default function Layout({
             </h2>
           </>
         )}
+        <Nav />
       </header>
       <main>{children}</main>
       {!home && (
