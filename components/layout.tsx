@@ -4,6 +4,7 @@ import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Nav from "./nav";
+import Footer from "./footer";
 
 const name = "Lazywon's DevLog";
 export const siteTitle = "Lazywon's Blog";
@@ -74,6 +75,7 @@ export default function Layout({
           </Link>
         </div>
       )}
+      <Footer />
     </div>
   );
 }

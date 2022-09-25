@@ -1,0 +1,35 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  margin-top: 100px;
+  align-items: center;
+  border-style: solid;
+  border: 0 solid #dbdce0;
+  border-top-width: 1px;
+  border-bottom: 0px;
+  border-right: 0px;
+  border-left: 0px;
+}
+
+.social a {
+  /* align-items: center; */
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.text {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.home {
+  font-size: 0.8rem;
+  margin-top: 10px;
+  color: #b3b4b8;
+}
+
+.home:hover {
+  color: rgb(130, 169, 240);
+}

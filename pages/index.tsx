@@ -1,6 +1,5 @@
 import Head from "next/head";
-import Link from "next/link";
-import Date from "../components/date";
+import RecentPosts from "../components/recentPosts";
 import Layout, { siteTitle } from "../components/layout";
 import { getSortedPostsData } from "../lib/posts";
 import utilStyles from "../styles/utils.module.css";
@@ -20,24 +19,18 @@ export default function Home({
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
+      {/* <section className={utilStyles.headingMd}>
         <p>Hello World! I'm Lazywon :-) I'm a frontend developer.</p>
         <p>Welcome to my Devlog ! </p>
-      </section>
+      </section> */}
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Recent Posts</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
+          {allPostsData.length >= 5 ? (
+            <RecentPosts posts={allPostsData.slice(0, 5)} />
+          ) : (
+            <RecentPosts posts={allPostsData} />
+          )}
         </ul>
       </section>
     </Layout>
