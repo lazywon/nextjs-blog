@@ -5,6 +5,7 @@ import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Nav from "./nav";
 import Footer from "./footer";
+import { useEffect, useState } from "react";
 
 const name = "Lazywon's DevLog";
 export const siteTitle = "Lazywon's Blog";
@@ -16,6 +17,23 @@ export default function Layout({
   children: React.ReactNode;
   home?: boolean;
 }) {
+  const [theme, setTheme] = useState<string>("light");
+
+  const changeTheme = (e) => {
+    e.preventDefault();
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem("theme");
+    savedTheme && setTheme(savedTheme);
+  }, []);
+
+  useEffect(() => {
+    document.body.dataset.theme = theme;
+    window.localStorage.setItem("theme", theme);
+  }, [theme]);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -66,6 +84,27 @@ export default function Layout({
           </>
         )}
         <Nav />
+        <div onClick={changeTheme}>
+          {theme === "dark" ? (
+            <Image
+              priority
+              src="/images/light.png"
+              className={utilStyles.borderCircle}
+              height={30}
+              width={30}
+              alt="light mode로 변경"
+            />
+          ) : (
+            <Image
+              priority
+              src="/images/dark.png"
+              className={utilStyles.borderCircle}
+              height={30}
+              width={30}
+              alt="dark mode로 변경"
+            />
+          )}
+        </div>
       </header>
       <main>{children}</main>
       {!home && (
