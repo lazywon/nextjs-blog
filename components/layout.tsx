@@ -1,13 +1,10 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "./layout.module.css";
-import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
-import Nav from "./nav";
+import Header from "./header";
 import Footer from "./footer";
 import React, { useEffect, useState } from "react";
 
-const name = "Lazywon's DevLog";
 export const siteTitle = "Lazywon's Blog";
 
 export default function Layout({
@@ -18,10 +15,6 @@ export default function Layout({
   home?: boolean;
 }) {
   const [theme, setTheme] = useState<string>("light");
-
-  const changeTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("theme");
@@ -46,65 +39,9 @@ export default function Layout({
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
-
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.png"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt=""
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.png"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt=""
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
-        <Nav />
-        <div onClick={changeTheme}>
-          {theme === "dark" ? (
-            <Image
-              priority
-              src="/images/light.png"
-              className={utilStyles.borderCircle}
-              height={30}
-              width={30}
-              alt="light mode로 변경"
-            />
-          ) : (
-            <Image
-              priority
-              src="/images/dark.png"
-              className={utilStyles.borderCircle}
-              height={30}
-              width={30}
-              alt="dark mode로 변경"
-            />
-          )}
-        </div>
-      </header>
+      <Header home={home} theme={theme} setTheme={setTheme} />
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>

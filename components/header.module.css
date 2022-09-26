@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.containerRight {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.themeButton {
+  width: 100px;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  margin-right: 0.5rem;
+}
+
+.sun,
+.moon {
+  cursor: pointer;
+  transition: all ease 0.5s;
+}
+
+.sun:hover {
+  /* transform: scale(1.1); */
+  transform: rotate(30deg);
+}
+
+.moon:hover {
+  transform: rotate(30deg);
+}
