@@ -5,7 +5,7 @@ import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Nav from "./nav";
 import Footer from "./footer";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const name = "Lazywon's DevLog";
 export const siteTitle = "Lazywon's Blog";
@@ -19,8 +19,7 @@ export default function Layout({
 }) {
   const [theme, setTheme] = useState<string>("light");
 
-  const changeTheme = (e) => {
-    e.preventDefault();
+  const changeTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
@@ -114,7 +113,7 @@ export default function Layout({
           </Link>
         </div>
       )}
-      <Footer />
+      <Footer theme={theme} />
     </div>
   );
 }
