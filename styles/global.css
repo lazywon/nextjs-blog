@@ -5,6 +5,7 @@ body[data-theme="light"] {
   --color-bg-toggle: #1e90ff; */
   --color-text-primary: black;
   --color-bg-primary: white;
+  --bg-profile-img: url("/images/home_profile_light.jpeg");
 }
 
 body[data-theme="dark"] {
@@ -14,6 +15,7 @@ body[data-theme="dark"] {
   --color-bg-toggle: #a9a9a9; */
   --color-text-primary: white;
   --color-bg-primary: black;
+  --bg-profile-img: url("/images/home_profile_dark.jpeg");
 }
 
 html,

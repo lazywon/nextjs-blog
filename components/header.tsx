@@ -3,6 +3,7 @@ import styles from "./header.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Nav from "./nav";
+import HomeProfile from "./homeProfile";
 
 const Header = ({ home, theme, setTheme }) => {
   const changeTheme = () => {
@@ -46,7 +47,6 @@ const Header = ({ home, theme, setTheme }) => {
                 width={80}
                 alt=""
               />
-              {/* <h1 className={utilStyles.heading2Xl}>Lazywon's DevLog</h1> */}
             </>
           ) : (
             <>
@@ -62,15 +62,11 @@ const Header = ({ home, theme, setTheme }) => {
                   />
                 </a>
               </Link>
-              {/* <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>Lazywon's DevLog</a>
-              </Link>
-            </h2> */}
             </>
           )}
         </div>
       </div>
+      {home && <HomeProfile />}
     </header>
   );
 };
