@@ -24,7 +24,10 @@ export default function Post({
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <div
+          className="prose prose-base mt-10 sm:my-16"
+          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+        />
       </article>
     </Layout>
   );
