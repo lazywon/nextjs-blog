@@ -4,6 +4,13 @@ import Layout from "../../components/layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import utilStyles from "../../styles/utils.module.css";
 import { GetStaticProps, GetStaticPaths } from "next";
+import { useEffect } from "react";
+
+import Prism from "prismjs";
+// import "prismjs/themes/prism-tomorrow.css"; //okaidia
+import "prismjs/components/prism-jsx.js";
+import "prismjs/plugins/line-numbers/prism-line-numbers.js";
+import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 
 export default function Post({
   postData,
@@ -14,6 +21,10 @@ export default function Post({
     contentHtml: string;
   };
 }) {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
+
   return (
     <Layout>
       <Head>
@@ -25,7 +36,7 @@ export default function Post({
           <Date dateString={postData.date} />
         </div>
         <div
-          className="prose prose-base mt-10 sm:my-16"
+          className="prose prose-base mt-10 sm:my-16 language-jsx line-numbers"
           dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
         />
       </article>
