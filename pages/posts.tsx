@@ -1,10 +1,12 @@
 import Head from "next/head";
 import Link from "next/link";
 import Date from "../components/date";
+import Search from "../components/search";
 import Layout, { siteTitle } from "../components/layout";
 import { getSortedPostsData } from "../lib/posts";
 import utilStyles from "../styles/utils.module.css";
 import { GetStaticProps } from "next";
+import React, { useState } from "react";
 
 export default function Posts({
   allPostsData,
@@ -15,6 +17,15 @@ export default function Posts({
     title: string;
   }[];
 }) {
+  const [searchValue, setSearchValue] = useState<string>("");
+  const filteredBlogPosts = allPostsData.filter((post) =>
+    post.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
   return (
     <Layout>
       <Head>
@@ -22,8 +33,9 @@ export default function Posts({
       </Head>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Posts</h2>
+        <Search handleSearch={handleSearch} />
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
+          {filteredBlogPosts.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>
                 <a>{title}</a>
