@@ -36,7 +36,7 @@ export default function Post({
           <Date dateString={postData.date} />
         </div>
         <div
-          className="prose prose-base mt-10 sm:my-16 language-jsx line-numbers"
+          className="prose prose-base dark:prose-invert mt-10 sm:my-16 language-jsx line-numbers"
           dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
         />
       </article>

@@ -3,20 +3,18 @@
 @tailwind utilities;
 
 body[data-theme="light"] {
-  /* --color-text-primary: #27201a;
-  --color-text-secondary: #076963;
-  --color-bg-primary: #fff;
-  --color-bg-toggle: #1e90ff; */
+  --bg-main: white;
+  --bg-sub: #bdc1c9;
+  --text-main: black;
   --color-text-primary: black;
   --color-bg-primary: white;
   --bg-profile-img: url("/images/home_profile_light.jpeg");
 }
 
 body[data-theme="dark"] {
-  /* --color-text-primary: #e3e3e3;
-  --color-text-secondary: #ff6b00;
-  --color-bg-primary: #15232d;
-  --color-bg-toggle: #a9a9a9; */
+  --bg-main: black;
+  --bg-sub: #333333;
+  --text-main: white;
   --color-text-primary: white;
   --color-bg-primary: black;
   --bg-profile-img: url("/images/home_profile_dark.jpeg");

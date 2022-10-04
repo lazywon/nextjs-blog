@@ -5,7 +5,7 @@ import Link from "next/link";
 import Nav from "./nav";
 import HomeProfile from "./homeProfile";
 
-const Header = ({ home, theme, setTheme }) => {
+const Header = ({ home, theme, setTheme, mounted }) => {
   const changeTheme = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
@@ -16,7 +16,7 @@ const Header = ({ home, theme, setTheme }) => {
         <Nav />
         <div className={styles.containerRight}>
           <button className={styles.themeButton} onClick={changeTheme}>
-            {theme === "dark" ? (
+            {mounted && theme === "dark" ? (
               <Image
                 priority
                 src="/images/light.png"
