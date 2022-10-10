@@ -1,6 +1,4 @@
 import Image from "next/image";
-import styles from "./header.module.css";
-import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Nav from "./nav";
 import HomeProfile from "./homeProfile";
@@ -11,16 +9,19 @@ const Header = ({ home, theme, setTheme, mounted }) => {
   };
 
   return (
-    <header className={styles.header}>
-      <div className={styles.container}>
+    <header className="flex flex-col justify-center items-center pt-8 pb-16">
+      <div className="flex justify-between items-center flex-nowrap w-full">
         <Nav />
-        <div className={styles.containerRight}>
-          <button className={styles.themeButton} onClick={changeTheme}>
+        <div className="flex flex-row items-center justify-between">
+          <button
+            className="w-20 border-0 outline-0 bg-transparent pt-1"
+            onClick={changeTheme}
+          >
             {mounted && theme === "dark" ? (
               <Image
                 priority
                 src="/images/light.png"
-                className={`${utilStyles.borderCircle} ${styles.sun}`}
+                className={`rounded-full cursor-pointer transition-all ease-in duration-300 hover:origin-center hover:rotate-45 hover:scale-105`}
                 height={40}
                 width={40}
                 alt="light mode로 변경"
@@ -29,7 +30,7 @@ const Header = ({ home, theme, setTheme, mounted }) => {
               <Image
                 priority
                 src="/images/dark.png"
-                className={`${utilStyles.borderCircle} ${styles.moon}`}
+                className={`rounded-full cursor-pointer transition-all ease-in duration-300 hover:origin-center hover:rotate-45 hover:scale-105`}
                 height={40}
                 width={40}
                 alt="dark mode로 변경"
@@ -42,7 +43,7 @@ const Header = ({ home, theme, setTheme, mounted }) => {
               <Image
                 priority
                 src="/images/profile.png"
-                className={utilStyles.borderCircle}
+                className="rounded-full"
                 height={80}
                 width={80}
                 alt=""
@@ -55,7 +56,7 @@ const Header = ({ home, theme, setTheme, mounted }) => {
                   <Image
                     priority
                     src="/images/profile.png"
-                    className={utilStyles.borderCircle}
+                    className="rounded-full"
                     height={108}
                     width={108}
                     alt=""

@@ -2,7 +2,6 @@ import Head from "next/head";
 import Date from "../../components/date";
 import Layout from "../../components/layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
-import utilStyles from "../../styles/utils.module.css";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { useEffect } from "react";
 
@@ -31,8 +30,10 @@ export default function Post({
         <title>{postData.title}</title>
       </Head>
       <article>
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-        <div className={utilStyles.lightText}>
+        <h1 className="text-4xl font-extrabold tracking-tighter my-4 mx-0">
+          {postData.title}
+        </h1>
+        <div className="text-gray-500">
           <Date dateString={postData.date} />
         </div>
         <div

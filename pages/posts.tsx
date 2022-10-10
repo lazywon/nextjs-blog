@@ -4,7 +4,6 @@ import Date from "../components/date";
 import Search from "../components/search";
 import Layout, { siteTitle } from "../components/layout";
 import { getSortedPostsData } from "../lib/posts";
-import utilStyles from "../styles/utils.module.css";
 import { GetStaticProps } from "next";
 import React, { useState } from "react";
 
@@ -31,17 +30,17 @@ export default function Posts({
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Posts</h2>
+      <section className="text-lg pt-px">
+        <h2 className="text-2xl my-4 mx-0">Posts</h2>
         <Search handleSearch={handleSearch} />
-        <ul className={utilStyles.list}>
+        <ul className="list-none p-0 m-0">
           {filteredBlogPosts.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
+            <li className="mx-0 mt-0 mb-5" key={id}>
               <Link href={`/posts/${id}`}>
                 <a>{title}</a>
               </Link>
               <br />
-              <small className={utilStyles.lightText}>
+              <small className="text-gray-500">
                 <Date dateString={date} />
               </small>
             </li>

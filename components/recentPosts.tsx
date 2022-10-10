@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Date from "../components/date";
-import utilStyles from "../styles/utils.module.css";
 
 const RecentPosts = ({
   posts,
@@ -14,12 +13,12 @@ const RecentPosts = ({
   return (
     <>
       {posts.map(({ id, date, title }) => (
-        <li className={utilStyles.listItem} key={id}>
+        <li className="mx-0 mt-0 mb-5" key={id}>
           <Link href={`/posts/${id}`}>
             <a>{title}</a>
           </Link>
           <br />
-          <small className={utilStyles.lightText}>
+          <small className="text-gray-500">
             <Date dateString={date} />
           </small>
         </li>

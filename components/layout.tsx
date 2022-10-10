@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "./layout.module.css";
 import Link from "next/link";
 import Header from "./header";
 import Footer from "./footer";
@@ -31,7 +30,7 @@ export default function Layout({
   }, [theme]);
 
   return (
-    <div className={styles.container}>
+    <div className="max-w-xl py-0 px-4 mx-auto mt-0 mb-24">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="Lazywon's Dev Blog" />
@@ -48,7 +47,7 @@ export default function Layout({
       <Header home={home} theme={theme} setTheme={setTheme} mounted={mounted} />
       <main>{children}</main>
       {!home && (
-        <div className={styles.backToHome}>
+        <div className="mt-12 mx-0 mb-0">
           <Link href="/">
             <a>← Back to home</a>
           </Link>

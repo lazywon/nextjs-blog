@@ -2,7 +2,6 @@ import Head from "next/head";
 import RecentPosts from "../components/recentPosts";
 import Layout, { siteTitle } from "../components/layout";
 import { getSortedPostsData } from "../lib/posts";
-import utilStyles from "../styles/utils.module.css";
 import { GetStaticProps } from "next";
 
 export default function Home({
@@ -19,13 +18,13 @@ export default function Home({
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      {/* <section className={utilStyles.headingMd}>
+      {/* <section className="text-lg pt-px">
         <p>Hello World! I'm Lazywon :-) I'm a frontend developer.</p>
         <p>Welcome to my Devlog ! </p>
       </section> */}
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Recent Posts</h2>
-        <ul className={utilStyles.list}>
+      <section className="text-lg pt-px">
+        <h2 className="text-2xl my-4 mx-0">Recent Posts</h2>
+        <ul className="list-none p-0 m-0">
           {allPostsData.length >= 5 ? (
             <RecentPosts posts={allPostsData.slice(0, 5)} />
           ) : (

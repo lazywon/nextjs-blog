@@ -1,15 +1,14 @@
 import Link from "next/link";
 import React from "react";
 import navlinks from "../data/navlinks";
-import styles from "./nav.module.css";
 
 const Nav = () => {
   return (
-    <nav className={styles.nav}>
+    <nav className="flex relative w-full max-w-2xl items-center justify-between mx-auto">
       <div>
         {navlinks.map(({ title, link }) => (
           <Link href={link} key={title}>
-            <a className={styles.title}>{title}</a>
+            <a className="mr-4 font-semibold">{title}</a>
           </Link>
         ))}
       </div>
