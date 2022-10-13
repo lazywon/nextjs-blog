@@ -6,6 +6,7 @@ import Layout, { siteTitle } from "../components/layout";
 import { getSortedPostsData } from "../lib/posts";
 import { GetStaticProps } from "next";
 import React, { useState } from "react";
+import Image from "next/image";
 
 export default function Posts({
   allPostsData,
@@ -14,6 +15,8 @@ export default function Posts({
     id: string;
     date: string;
     title: string;
+    description: string;
+    thumbnailUrl: string;
   }[];
 }) {
   const [searchValue, setSearchValue] = useState<string>("");
@@ -34,17 +37,33 @@ export default function Posts({
         <h2 className="text-2xl my-4 mx-0">Posts</h2>
         <Search handleSearch={handleSearch} />
         <ul className="list-none p-0 m-0">
-          {filteredBlogPosts.map(({ id, date, title }) => (
-            <li className="mx-0 mt-0 mb-5" key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small className="text-gray-500">
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
+          {filteredBlogPosts.map(
+            ({ id, date, title, description, thumbnailUrl }) => (
+              <li className="mx-0 mt-0 mb-5" key={id}>
+                <div className="flex flex-nowrap items-center justify-between w-full cursor-pointer">
+                  <div className="">
+                    <Link href={`/posts/${id}`}>
+                      <a className="">{title}</a>
+                    </Link>
+                    <br />
+                    <span className="text-sm text-gray-500">{description}</span>
+                    <br />
+                    <span className="text-xs text-gray-500">
+                      <Date dateString={date} />
+                    </span>
+                  </div>
+                  <Image
+                    src={thumbnailUrl}
+                    className=""
+                    alt="thumbnail"
+                    width={100}
+                    height={100}
+                    objectFit="cover"
+                  />
+                </div>
+              </li>
+            )
+          )}
         </ul>
       </section>
     </Layout>
