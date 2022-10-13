@@ -7,6 +7,8 @@ import { getSortedPostsData } from "../lib/posts";
 import { GetStaticProps } from "next";
 import React, { useState } from "react";
 import Image from "next/image";
+import { NextSeo } from "next-seo";
+import metadata from "../data/metadata";
 
 export default function Posts({
   allPostsData,
@@ -30,9 +32,15 @@ export default function Posts({
 
   return (
     <Layout>
-      <Head>
+      <NextSeo
+        title="Posts"
+        description="기술 블로그 작성 공간입니다."
+        canonical={`${metadata.url}/posts`}
+        openGraph={{ url: `${metadata.url}/posts` }}
+      />
+      {/* <Head>
         <title>{siteTitle}</title>
-      </Head>
+      </Head> */}
       <section className="text-lg pt-px">
         <h2 className="text-2xl my-4 mx-0">Posts</h2>
         <Search handleSearch={handleSearch} />
