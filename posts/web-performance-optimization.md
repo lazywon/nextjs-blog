@@ -2,7 +2,7 @@
 title: "웹 성능 최적화 방안에 대해"
 date: "2022-10-06"
 description: "성능 최적화 방안에 대해 정리해 보자 !"
-thumbnailUrl: "/posts/thumbnail/web-performance-optimization.jpg"
+thumbnailUrl: "/posts/thumbnail/web-performance-optimization.png"
 tags: ["성능최적화", "렌더링 최적화", "로딩 최적화"]
 ---
 

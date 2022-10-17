@@ -21,6 +21,7 @@ export default function Post({
     title: string;
     date: string;
     contentHtml: string;
+    thumbnailUrl: string;
   };
 }) {
   useEffect(() => {
@@ -36,7 +37,17 @@ export default function Post({
         title={postData.title}
         description=""
         canonical={`${metadata.url}/posts/${postData.id}`}
-        openGraph={{ url: `${metadata.url}/posts/${postData.id}` }}
+        openGraph={{
+          url: `${metadata.url}/posts/${postData.id}`,
+          images: [
+            {
+              url: `${metadata.url}${postData.thumbnailUrl}`,
+              width: 850,
+              height: 650,
+              alt: postData.title,
+            },
+          ],
+        }}
       />
       <article>
         <h1 className="text-4xl font-extrabold tracking-tighter my-4 mx-0">
