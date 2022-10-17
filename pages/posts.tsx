@@ -38,11 +38,10 @@ export default function Posts({
         canonical={`${metadata.url}/posts`}
         openGraph={{ url: `${metadata.url}/posts` }}
       />
-      {/* <Head>
-        <title>{siteTitle}</title>
-      </Head> */}
       <section className="text-lg pt-px">
-        <h2 className="text-2xl my-4 mx-0">Posts</h2>
+        <h1 className="text-3xl font-extrabold leading-9 my-4 mx-0 md:text-4xl md:leading-14 sm:text-4xl sm:leading-10">
+          Posts
+        </h1>
         <Search handleSearch={handleSearch} />
         <ul className="list-none p-0 m-0">
           {filteredBlogPosts.map(

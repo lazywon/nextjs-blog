@@ -1,9 +1,11 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import Date from "../../components/date";
 import Layout from "../../components/layout";
+import metadata from "../../data/metadata";
 import { getAllTags, getTagPosts } from "../../lib/tags";
 
 const Tag = ({ posts, tag }) => {
@@ -11,9 +13,12 @@ const Tag = ({ posts, tag }) => {
   const tagName = tag[0].toUpperCase() + tag.split(" ").join("-").slice(1);
   return (
     <Layout>
-      <Head>
-        <title>{tagName}</title>
-      </Head>
+      <NextSeo
+        title={tagName}
+        description=""
+        canonical={`${metadata.url}/tags/${tag}`}
+        openGraph={{ url: `${metadata.url}/tags/${tag}` }}
+      />
       <section className="text-lg pt-px">
         <h2 className="text-2xl my-4 mx-0">{tagName}</h2>
         {/* <Search handleSearch={handleSearch} /> */}

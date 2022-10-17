@@ -57,8 +57,8 @@ const Header = ({ home, theme, setTheme, mounted }) => {
                     priority
                     src="/images/profile.png"
                     className="rounded-full"
-                    height={108}
-                    width={108}
+                    height={80}
+                    width={80}
                     alt=""
                   />
                 </a>

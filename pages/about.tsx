@@ -7,11 +7,14 @@ export default function About() {
     <Layout>
       <NextSeo
         title="About"
+        description="About Lazywon"
         canonical={`${metadata.url}/about`}
         openGraph={{ url: `${metadata.url}/about` }}
       />
-      <div>
-        <h1 className="font-extrabold text-5xl mb-4">About Page</h1>
+      <div className="space-x-2 pt-6 pb-8 md:space-y-5">
+        <h1 className="font-extrabold text-3xl mb-4 md:text-4xl md:leading-14 sm:text-4xl sm:leading-10">
+          About Page
+        </h1>
         <p className="font-bold">...</p>
       </div>
     </Layout>

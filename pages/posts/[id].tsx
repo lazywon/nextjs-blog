@@ -10,11 +10,14 @@ import Prism from "prismjs";
 import "prismjs/components/prism-jsx.js";
 import "prismjs/plugins/line-numbers/prism-line-numbers.js";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+import metadata from "../../data/metadata";
+import { NextSeo } from "next-seo";
 
 export default function Post({
   postData,
 }: {
   postData: {
+    id: string;
     title: string;
     date: string;
     contentHtml: string;
@@ -29,6 +32,12 @@ export default function Post({
       <Head>
         <title>{postData.title}</title>
       </Head>
+      <NextSeo
+        title={postData.title}
+        description=""
+        canonical={`${metadata.url}/posts/${postData.id}`}
+        openGraph={{ url: `${metadata.url}/posts/${postData.id}` }}
+      />
       <article>
         <h1 className="text-4xl font-extrabold tracking-tighter my-4 mx-0">
           {postData.title}

@@ -15,13 +15,6 @@ export default function Home({
 }) {
   return (
     <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      {/* <section className="text-lg pt-px">
-        <p>Hello World! I'm Lazywon :-) I'm a frontend developer.</p>
-        <p>Welcome to my Devlog ! </p>
-      </section> */}
       <section className="text-lg pt-px">
         <h2 className="text-2xl my-4 mx-0">Recent Posts</h2>
         <ul className="list-none p-0 m-0">
