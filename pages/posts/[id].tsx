@@ -42,8 +42,8 @@ export default function Post({
           images: [
             {
               url: `${metadata.url}${postData.thumbnailUrl}`,
-              width: 850,
-              height: 650,
+              width: 800,
+              height: 600,
               alt: postData.title,
             },
           ],
