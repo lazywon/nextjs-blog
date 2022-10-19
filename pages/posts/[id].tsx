@@ -28,8 +28,11 @@ export default function Post({
 
   useEffect(() => {
     setMounted(true);
-    Prism.highlightAll();
   }, []);
+
+  useEffect(() => {
+    Prism.highlightAll();
+  }, [mounted]);
 
   return (
     <Layout>
@@ -59,10 +62,14 @@ export default function Post({
         <div className="text-gray-500">
           <Date dateString={postData.date} />
         </div>
-        <div
-          className="prose prose-base dark:prose-invert mt-10 sm:my-16 language-jsx line-numbers"
-          dangerouslySetInnerHTML={{ __html: mounted && postData.contentHtml }}
-        />
+        {
+          <div
+            className="prose prose-base dark:prose-invert mt-10 sm:my-16 language-jsx line-numbers"
+            dangerouslySetInnerHTML={{
+              __html: mounted && postData.contentHtml,
+            }}
+          />
+        }
       </article>
     </Layout>
   );
