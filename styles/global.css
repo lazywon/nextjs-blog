@@ -57,6 +57,18 @@ img {
  * @author Rose Pritchard
  */
 
+/* custom 
+*/
+.prose-base {
+  font-size: 0.9rem;
+}
+
+.prose :where(strong):not(:where([class~="not-prose"] *)) {
+  color: #6196cc;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   color: #ccc;
@@ -88,7 +100,8 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #2d2d2d;
+  /* background: #2d2d2d; */
+  background: #1f2937;
 }
 
 /* Inline code */

@@ -1,16 +1,22 @@
 ---
 title: "HTTP 버전 별 특징 파헤치기"
 date: "2022-10-18"
-description: "HTTP의 변천사와 버전 별 특징에 대해 제대로 알아보기 "
-# thumbnailUrl: "/posts/thumbnail/evolution-of-http.png"
-tags: ["http"]
+description: "HTTP의 변천사와 버전 별 특징에 대해 본격적으로 알아보기 😎"
+thumbnailUrl: "/posts/thumbnail/evolution-of-http.png"
+tags: ["http", "http/0.9", "http/1.0", "http/1.1", "http/2"]
 ---
 
 ## 목차
 
+- [HTTP란?](#http란)
+  - [HTTP(HyperText Transfer Protocol Version)](#httphypertext-transfer-protocol-version)
 - [HTTP 변천사](#http-변천사)
   - [HTTP/0.9](#http09)
   - [HTTP/1.0](#http10)
+  - [HTTP/1.1](#http11)
+  - [HTTP/2](#http2)
+    - [HTTP/1.1의 단점](#http11의-단점)
+  - [이미지로 HTTP 통신 과정 비교하기](#이미지로-http-통신-과정-비교하기)
 
 ---
 
@@ -19,6 +25,8 @@ tags: ["http"]
 ## HTTP(HyperText Transfer Protocol Version)
 
 TCP 연결 기반 위에서 동작하는 프로토콜이다. 다시말해, 웹에서 클라이언트(브라우저)가 웹 서버(httpd, nginx, apache ..)정보를 주고받을 수 있는 프로토콜이다.
+
+---
 
 # HTTP 변천사
 
@@ -169,6 +177,8 @@ HTTP/1.1의 경우 서로 간의 연결은 계속 유지되었으나, 그 안에
 ## 이미지로 HTTP 통신 과정 비교하기
 
 ![](/posts/evolution-of-http/http-comparison.png)
+
+---
 
 - 참고
   - [MDN HTTP의 진화](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP)
