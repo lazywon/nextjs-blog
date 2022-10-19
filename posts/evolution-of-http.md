@@ -182,4 +182,4 @@ HTTP/1.1의 경우 서로 간의 연결은 계속 유지되었으나, 그 안에
 
 - 참고
   - [MDN HTTP의 진화](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP)
-  - [그림으로 쉽게 보는 TCP](https://brunch.co.kr/@swimjiy/39)
+  - [그림으로 쉽게 보는 HTTP 변천사](https://brunch.co.kr/@swimjiy/39)
