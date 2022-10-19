@@ -59,12 +59,10 @@ export default function Post({
         <div className="text-gray-500">
           <Date dateString={postData.date} />
         </div>
-        {mounted && (
-          <div
-            className="prose prose-base dark:prose-invert mt-10 sm:my-16 language-jsx line-numbers"
-            dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-          />
-        )}
+        <div
+          className="prose prose-base dark:prose-invert mt-10 sm:my-16 language-jsx line-numbers"
+          dangerouslySetInnerHTML={{ __html: mounted && postData.contentHtml }}
+        />
       </article>
     </Layout>
   );
