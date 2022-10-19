@@ -3,7 +3,7 @@ import Date from "../../components/date";
 import Layout from "../../components/layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import Prism from "prismjs";
 // import "prismjs/themes/prism-tomorrow.css"; //okaidia
@@ -24,7 +24,10 @@ export default function Post({
     thumbnailUrl: string;
   };
 }) {
+  const [mounted, setMounted] = useState<boolean>(false);
+
   useEffect(() => {
+    setMounted(true);
     Prism.highlightAll();
   }, []);
 
@@ -56,10 +59,12 @@ export default function Post({
         <div className="text-gray-500">
           <Date dateString={postData.date} />
         </div>
-        <div
-          className="prose prose-base dark:prose-invert mt-10 sm:my-16 language-jsx line-numbers"
-          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-        />
+        {mounted && (
+          <div
+            className="prose prose-base dark:prose-invert mt-10 sm:my-16 language-jsx line-numbers"
+            dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+          />
+        )}
       </article>
     </Layout>
   );
