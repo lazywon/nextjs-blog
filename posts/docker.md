@@ -17,6 +17,8 @@ tags: ["docker"]
 
 # Docker란?
 
+Docker는 컨테이너 기술을 사용하여 애플리케이션에 필요한 환경을 신속하게 구축하고 테스트 및 배포를 할 수 있게 해주는 플랫폼이다.
+
 Docker는 Immutable Infrastructure를 구현한 프로젝트이다.
 
 **Immutable Infrastructure**는 호스트 OS와 서비스 운영 환경(서버 프로그램, 소스 코드, 컴파일된 바이너리)을 분리하고, 한번 설정한 운영 환경은 변하지 않는다는 개념이다.
