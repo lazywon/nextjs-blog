@@ -25,53 +25,81 @@ export default function Post({
   };
 }) {
   const [mounted, setMounted] = useState<boolean>(false);
+  const [scroll, setScroll] = useState<number>(0);
 
   useEffect(() => {
     setMounted(true);
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   useEffect(() => {
     Prism.highlightAll();
   }, [mounted]);
 
+  //scroll indicator
+  const onScroll = () => {
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    const scrollPercent = (winScroll / height) * 100;
+    setScroll(scrollPercent);
+  };
+
   return (
-    <Layout>
-      <Head>
-        <title>{postData.title}</title>
-      </Head>
-      <NextSeo
-        title={postData.title}
-        description=""
-        canonical={`${metadata.url}/posts/${postData.id}`}
-        openGraph={{
-          url: `${metadata.url}/posts/${postData.id}`,
-          images: [
-            {
-              url: `${metadata.url}${postData.thumbnailUrl}`,
-              width: 800,
-              height: 600,
-              alt: postData.title,
-            },
-          ],
-        }}
-      />
-      <article>
-        <h1 className="text-4xl font-extrabold tracking-tighter my-4 mx-0">
-          {postData.title}
-        </h1>
-        <div className="text-gray-500">
-          <Date dateString={postData.date} />
-        </div>
-        {
+    <>
+      <div className="fixed top-0 z-10 w-full">
+        <div className="w-full h-2 bg-gray-100 dark:bg-gray-600">
           <div
-            className="prose prose-base dark:prose-invert mt-10 sm:my-16 language-jsx line-numbers"
-            dangerouslySetInnerHTML={{
-              __html: mounted && postData.contentHtml,
-            }}
-          />
-        }
-      </article>
-    </Layout>
+            style={{ width: `${scroll}%` }}
+            className="h-2 bg-lime-200"
+          ></div>
+        </div>
+      </div>
+      <Layout>
+        <Head>
+          <title>{postData.title}</title>
+        </Head>
+        <NextSeo
+          title={postData.title}
+          description=""
+          canonical={`${metadata.url}/posts/${postData.id}`}
+          openGraph={{
+            url: `${metadata.url}/posts/${postData.id}`,
+            images: [
+              {
+                url: `${metadata.url}${postData.thumbnailUrl}`,
+                width: 800,
+                height: 600,
+                alt: postData.title,
+              },
+            ],
+          }}
+        />
+        <article>
+          <h1 className="text-4xl font-extrabold tracking-tighter my-4 mx-0">
+            {postData.title}
+          </h1>
+          <div className="text-gray-500">
+            <Date dateString={postData.date} />
+          </div>
+          {
+            <div
+              className="prose prose-base dark:prose-invert mt-10 sm:my-16 language-jsx line-numbers"
+              dangerouslySetInnerHTML={{
+                __html: mounted && postData.contentHtml,
+              }}
+            />
+          }
+        </article>
+      </Layout>
+    </>
   );
 }
 
