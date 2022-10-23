@@ -26,6 +26,35 @@ export default function Post({
 }) {
   const [mounted, setMounted] = useState<boolean>(false);
   const [scroll, setScroll] = useState<number>(0);
+  const [topButton, setTopButton] = useState<boolean>(false);
+
+  const scrollToTop = () => {
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleTopButton = () => {
+    if (window.scrollY > 500) {
+      setTopButton(true);
+    } else {
+      setTopButton(false);
+    }
+  };
+
+  //scroll indicator
+  const onScroll = () => {
+    handleTopButton();
+
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    const scrollPercent = (winScroll / height) * 100;
+    setScroll(scrollPercent);
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -40,17 +69,6 @@ export default function Post({
   useEffect(() => {
     Prism.highlightAll();
   }, [mounted]);
-
-  //scroll indicator
-  const onScroll = () => {
-    const winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop;
-    const height =
-      document.documentElement.scrollHeight -
-      document.documentElement.clientHeight;
-    const scrollPercent = (winScroll / height) * 100;
-    setScroll(scrollPercent);
-  };
 
   return (
     <>
@@ -98,6 +116,15 @@ export default function Post({
             />
           }
         </article>
+        {topButton && (
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className="fixed z-10 right-10 bottom-10 text-xs w-10 h-10 font-bold border-2 rounded-full outline-none cursor-pointer p-2 bg-white dark:bg-black border-lime-400 text-lime-400 dark:border-lime-300 dark:text-lime-300 "
+          >
+            Top
+          </button>
+        )}
       </Layout>
     </>
   );
