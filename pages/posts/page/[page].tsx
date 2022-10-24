@@ -1,14 +1,12 @@
-import Layout from "../components/layout";
-import { getSortedPostsData } from "../lib/posts";
-import { GetStaticProps } from "next";
-import React from "react";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
-import metadata from "../data/metadata";
-import PostList from "../components/postList";
+import Layout from "../../../components/layout";
+import PostList from "../../../components/postList";
+import metadata from "../../../data/metadata";
+import { getSortedPostsData } from "../../../lib/posts";
+import { POSTS_PER_PAGE } from "../../posts";
 
-export const POSTS_PER_PAGE = 5;
-
-export default function Posts({
+const PostPage = ({
   allPostsData,
   initialDisplayPosts,
   pagination,
@@ -31,7 +29,7 @@ export default function Posts({
     currentPage: number;
     totalPages: number;
   };
-}) {
+}) => {
   return (
     <Layout>
       <NextSeo
@@ -47,11 +45,29 @@ export default function Posts({
       />
     </Layout>
   );
-}
+};
 
-export const getStaticProps: GetStaticProps = async () => {
+export default PostPage;
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const totalPosts = await getSortedPostsData();
+  const totalPages = Math.ceil(totalPosts.length / POSTS_PER_PAGE);
+  const paths = Array.from({ length: totalPages }, (_, i) => ({
+    params: { page: (i + 1).toString() },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const {
+    params: { page },
+  } = context;
   const allPostsData = getSortedPostsData();
-  const pageNumber = 1;
+  const pageNumber = parseInt(page as string);
   const initialDisplayPosts = allPostsData.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber

@@ -120,7 +120,7 @@ export default function Post({
           <button
             type="button"
             onClick={scrollToTop}
-            className="fixed z-10 right-10 bottom-10 text-xs w-10 h-10 font-bold border-2 rounded-full outline-none cursor-pointer p-2 bg-white dark:bg-black border-lime-400 text-lime-400 dark:border-lime-300 dark:text-lime-300 "
+            className="fixed z-10 right-10 bottom-10 text-xs w-10 h-10 font-bold border-2 rounded-full outline-none cursor-pointer p-2 bg-white dark:bg-black border-lime-400 text-lime-400 dark:border-lime-300 dark:text-lime-300 dark:hover:bg-gray-600 hover:bg-lime-100"
           >
             Top
           </button>
