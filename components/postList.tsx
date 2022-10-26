@@ -31,15 +31,19 @@ const PostList = ({ allPostsData, initialDisplayPosts, pagination }) => {
           {displayPosts.map(
             ({ id, date, title, description, thumbnailUrl }) => (
               <li className="mx-0 mt-0 mb-5" key={id}>
-                <div className="flex flex-nowrap items-center justify-between w-full cursor-pointer">
-                  <div className="">
+                <div className="flex flex-nowrap items-center justify-between w-full cursor-pointer my-4 rounded-lg">
+                  <div className="flex flex-col flex-nowrap items-start flex-1">
                     <Link href={`/posts/${id}`}>
-                      <a className="">{title}</a>
+                      <a className="text-base sm:text-lg font-bold my-1.5">
+                        {title}
+                      </a>
                     </Link>
-                    <br />
-                    <span className="text-sm text-gray-500">{description}</span>
-                    <br />
-                    <span className="text-xs text-gray-500">
+                    {/* <br /> */}
+                    <span className="text-sm text-gray-600 dark:text-gray-300 break-words">
+                      {description}
+                    </span>
+                    {/* <br /> */}
+                    <span className="text-xs mt-1.5 text-gray-500">
                       <Date dateString={date} />
                     </span>
                   </div>

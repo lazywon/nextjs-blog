@@ -30,7 +30,7 @@ export default function Layout({
   }, [theme]);
 
   return (
-    <div className="max-w-xl py-0 px-4 mx-auto mt-0 mb-24">
+    <div className="max-w-2xl py-0 px-4 mx-auto mt-0 mb-24">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
