@@ -2,7 +2,7 @@
 title: "Docker 개념과 사용 명령어 알아보기"
 date: "2022-10-20"
 description: "Docker의 개념을 간단히 살펴보고, 자주 사용하는 명령어에 대해 정리해 본다."
-# thumbnailUrl: "/posts/thumbnail/evolution-of-http.png"
+thumbnailUrl: "/posts/thumbnail/about-docker.png"
 tags: ["docker", "container"]
 ---
 
